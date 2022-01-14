@@ -156,13 +156,13 @@ ANSWER: Middleware is used within server methods.  Middleware functions are reus
 
 3. The basic principles of the REST architectural style.
 
-ANSWER: 
+ANSWER: REST is a uniform set of standards and constraints in which data is transfered via the internet.  Responses are formatted in HTML, JSON, or XML, and the operations include, but are not limited to, CRUD methods (get, post, put, delete).
 
-4. Understand and explain the use of Express Routers.
+4. Understand and explain the use of Express Routers. 
 
-ANSWER: 
+ANSWER: Express routers are used to divy up different endpoints utilized by the server. For instance, '/api/projects' will likely have several endpoints and server methods in and of itself. It makes sense to use an express router for this route in order to keep our code readable. By keeping all '/api/projects' endpoints in one file, it makes navigating the code much, much easier.  An Express Router is invoked in the server file, and can respond to server requests.
 
 5. Describe tooling used to manually test the correctness of an API.
 
-ANSWER: 
+ANSWER: To manually test an API, the two most common tools are Postman and HTTPie.  Within these tools, you can call the locally ran server and get responses for respective server methods.
 

@@ -54,4 +54,12 @@ router.delete('/:id', validateProjectId, (req, res, next) => {
         })
 })
 
+router.get('/:id/actions', validateProjectId, (req, res, next) => {
+    Project.getProjectActions(req.params.id).then(actions => {
+        res.status(200).json(actions)
+    }).catch(err => {
+        next(err)
+    })
+})
+
 module.exports = router

@@ -30,4 +30,12 @@ router.post('/', validateNewAction, (req, res, next) => {
         .catch(err => next(err))
 })
 
+router.put('/:id', validateActionId, validateNewAction, (req, res, next) => {
+    Action.update(req.params.id, req.newAction)
+        .then(updated => {
+            res.status(200).json(updated)
+        })
+        .catch(err => next(err))
+})
+
 module.exports = router

@@ -1,25 +1,18 @@
 const express = require('express')
-const server = express()
 const projectsRouter = require('./projects/projects-router')
 const actionsRouter = require('./actions/actions-router')
 
-// Configure your server here
-// Build your actions router in /api/actions/actions-router.js
-// Build your projects router in /api/projects/projects-router.js
-// Do NOT `server.listen()` inside this file!
-
+// Create server
+const server = express()
 server.use(express.json())
 
+// recognizes the two endpoints and re-directs server accordingly 
 server.use('/api/projects', projectsRouter)
-
 server.use('/api/actions', actionsRouter)
 
+// DEFAULT CATCH FAIL, to be routinely accessed upon failure
 server.use((err, req, res, next) => {
-    try {
-        res.status(500).json({message: err.message})
-    } catch {
-        next()
-    }        
+    res.status(500).json({message: 'request could not be completed'})
 })
 
 module.exports = server

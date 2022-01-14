@@ -1,6 +1,7 @@
 const Action = require('./actions-model')
 const Project = require('../projects/projects-model')
 
+// Takes in ID, checks if an action with that ID exists
 async function validateActionId(req, res, next) {
     const { id } = req.params
     
@@ -16,6 +17,8 @@ async function validateActionId(req, res, next) {
     } 
 }
 
+// 1. Checks if project that action is trying to attach to exists
+// 2. Verifies that required fields for an action are present in request
 async function validateNewAction(req, res, next) {
     const { project_id, description, notes, completed } = req.body
 

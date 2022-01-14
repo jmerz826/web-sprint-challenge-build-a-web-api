@@ -28,16 +28,11 @@ router.get('/:id', validateProjectId, (req, res, next) => {
 
 router.post('/', validateNewProject, async (req, res, next) => {
     const {newProject} = req
-    try {
-        console.log('here')
-        const success = await Project.insert(newProject)
-        if (!success) {
-            next()
-        } else {
-            res.status(201).json(success)
-        }
-    } catch {
+    const success = await Project.insert(newProject)
+    if (!success) {
         next()
+    } else {
+        res.status(201).json(success)
     }
 })
 

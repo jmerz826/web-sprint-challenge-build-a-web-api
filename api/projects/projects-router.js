@@ -36,4 +36,13 @@ router.post('/', validateNewProject, async (req, res, next) => {
     }
 })
 
+router.put('/:id', validateProjectId, validateNewProject, async (req, res, next) => {
+    const success = await Project.update(req.params.id, req.newProject)
+    if (!success) {
+        next()
+    } else {
+        res.status(200).json(success)
+    }
+})
+
 module.exports = router

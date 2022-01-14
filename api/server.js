@@ -1,5 +1,5 @@
-const express = require('express');
-const server = express();
+const express = require('express')
+const server = express()
 const projectsRouter = require('./projects/projects-router')
 
 // Configure your server here
@@ -15,4 +15,4 @@ server.use((err, req, res, next) => {
     res.status(500).json({message: err.message})
 })
 
-module.exports = server;
+module.exports = server

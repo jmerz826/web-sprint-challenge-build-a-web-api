@@ -38,4 +38,13 @@ router.put('/:id', validateActionId, validateNewAction, (req, res, next) => {
         .catch(err => next(err))
 })
 
+router.delete('/:id', validateActionId, (req, res, next) => {
+    const {id} = req.params
+    Action.remove(id)
+        .then(() => {
+            res.status(200).json({message: `Action with id ${id} deleted successfully`})
+        })
+        .catch(err => next(err))
+})
+
 module.exports = router

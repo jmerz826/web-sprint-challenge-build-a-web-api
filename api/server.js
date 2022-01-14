@@ -6,4 +6,8 @@ const server = express();
 // Build your projects router in /api/projects/projects-router.js
 // Do NOT `server.listen()` inside this file!
 
+server.use(express.json())
+
+
+
 module.exports = server;

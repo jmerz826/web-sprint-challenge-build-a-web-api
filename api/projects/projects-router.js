@@ -23,7 +23,11 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', validateProjectId, (req, res, next) => {
-    res.status(200).json(req.project)
+    try {
+        res.status(200).json(req.project)
+    } catch {
+        next()
+    }
 })
 
 router.post('/', validateNewProject, async (req, res, next) => {

@@ -15,4 +15,14 @@ async function validateProjectId(req, res, next) {
     }
 }
 
-module.exports = {validateProjectId}
+function validateNewProject(req, res, next) {
+    const { name, description, completed } = req.body
+    if (!name || !name.trim() || !description || !description.trim()) {
+        res.status(400).json({message: 'name and description are required for new project'})
+    } else {
+        req.newProject = {name, description, completed}
+        next()
+    }
+}
+
+module.exports = {validateProjectId, validateNewProject}

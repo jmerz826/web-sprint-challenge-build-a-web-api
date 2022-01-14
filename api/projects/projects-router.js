@@ -38,11 +38,20 @@ router.post('/', validateNewProject, async (req, res, next) => {
 
 router.put('/:id', validateProjectId, validateNewProject, async (req, res, next) => {
     const success = await Project.update(req.params.id, req.newProject)
-    if (!success) {
-        next()
-    } else {
-        res.status(200).json(success)
-    }
+
+    if (!success) next()
+        
+    else res.status(200).json(success)
+})
+
+router.delete('/:id', validateProjectId, (req, res, next) => {
+    Project.remove(req.params.id)
+        .then(() => {
+            res.status(200).json({})
+        })
+        .catch(err => {
+            next(err)
+        })
 })
 
 module.exports = router
